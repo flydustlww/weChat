@@ -1,3 +1,7 @@
+var config = require('./config')
+var Wechat = require('./wechat')
+var wechatApi = new Wechat(config)
+
 exports.reply = function * (next) {
 	var message = this.weixin
 	if (message.MsgType === 'event') {
@@ -39,6 +43,15 @@ exports.reply = function * (next) {
 						picUrl: 'http://mmbiz.qpic.cn/mmbiz_jpg/1nAZJsBNv0Bd4BFRIP0gXYGta9rrxf9RIibLfXmTt624UHxicf8lzDVHZwBspYMlXAXGniayuV6sic2cNlmg8zj9xw/0',
 						url:'http://www.nuomi.com'
 					}]
+				}else if (content==='4'){
+					var data = yield wechatApi.uploadMaterial('image',__dirname+'/2.jpg')
+					console.log('上传素材media_id:'+data.body.media_id);
+					console.log(__dirname+'/2.jpg');
+					reply = {
+						type:'image',
+						media_id:data.body.media_id
+					}
+
 				}else{
 					reply = '呃,您说的'+ content +'太复杂了'
 				}

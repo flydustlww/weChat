@@ -11,8 +11,9 @@ var tpl = heredoc(function(){/*
 	 <% if(msgType === 'text') { %>
 	 <Content><![CDATA[<%= content %>]]></Content>
 	 <% } else if (msgType ==='image') { %>
-	 	<PicUrl><![CDATA[this is a url]]></PicUrl>
+	 	<Image>
         <MediaId><![CDATA[<%= content.media_id %>]]></MediaId>
+        </Image>
 	 <% } else if (msgType ==='voice') {%>
 	 	 <MediaId><![CDATA[<%= content.media_id %>]]></MediaId>
          <Format><![CDATA[Format]]></Format>

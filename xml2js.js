@@ -57,5 +57,6 @@ exports.tpl = function(content,message) {
 	info.createTime = new Date().getTime()
 	info.ToUserName = toUserName
 	info.FromUserName = formUserName
+	console.log(JSON.stringify(info));
 	return tpl.compile(info)
 }
